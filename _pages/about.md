@@ -16,4 +16,4 @@ My interests and experience lie in designing and optimizing full-stack applicati
 
 I'm currently a Teaching Assistant for CS 3600: Intro to Artificial Intelligence under Prof. Riedl/Ma. 
 
-Outside of technology, I love watching old movies (letterboxd is linked), (amateurly) playing the piano, and learning about all kinds of influential art.
+Outside of technology, I love watching old movies (LetterBoxd is linked), (amateurly) playing the piano, and learning about all kinds of influential art.
