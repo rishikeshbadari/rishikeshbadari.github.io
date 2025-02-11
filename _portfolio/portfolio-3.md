@@ -1,6 +1,6 @@
 ---
-title: "Fine-tuning LLMs for Classification Tasks"
-excerpt: "Semester Project for CS 7643: Deep Learning"
+title: "Tik-Tok Style News Feed"
+excerpt: "A news feed consisting of short videos. Upload coming soon."
 collection: portfolio
 ---
 

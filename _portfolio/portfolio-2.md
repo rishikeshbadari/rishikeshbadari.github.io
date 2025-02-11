@@ -1,6 +1,6 @@
 ---
-title: "Fine-tuning LLMs for Classification Tasks"
-excerpt: "Semester Project for CS 7643: Deep Learning"
+title: "Predictive Analysis for Olympic Wins"
+excerpt: "Semester Project for CS 7641: Machine Learning"
 collection: portfolio
 ---
 

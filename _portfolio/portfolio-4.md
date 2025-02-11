@@ -1,6 +1,6 @@
 ---
-title: "Fine-tuning LLMs for Classification Tasks"
-excerpt: "Semester Project for CS 7643: Deep Learning"
+title: "Smart Cropping Tool"
+excerpt: "Using Seam-Carving to crop images differently. Upload coming soon."
 collection: portfolio
 ---
 
