@@ -1,6 +1,6 @@
 ---
-title: "Tik-Tok Style News Feed"
-excerpt: "A news feed consisting of short videos. Upload coming soon."
+title: "Game Trio Showcase"
+excerpt: "Semester Project for CS 2340: Objects & Design"
 collection: portfolio
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Smart Cropping Tool"
-excerpt: "Using Seam-Carving to crop images differently. Upload coming soon."
+title: "Tik-Tok Style News Feed"
+excerpt: "A news feed consisting of short videos. Upload coming soon."
 collection: portfolio
 ---
 
