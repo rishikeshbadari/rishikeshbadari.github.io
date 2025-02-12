@@ -39,6 +39,11 @@ collection: portfolio
     margin-right: 0.5rem;
 }
 
+.btn--github {
+    background-color: #24292e;
+    color: white;
+}
+
 .project__summary {
     font-size: 1.1rem;
     line-height: 1.6;
@@ -75,11 +80,14 @@ collection: portfolio
 </style>
 
 <div class="project__buttons">
-    <a href="https://raw.githubusercontent.com/rishikeshbadari/cs7643/main/Poster.pdf" class="btn btn--poster" title="Download Poster" style="text-decoration: none;" download="Poster.pdf">
-            <i class="fas fa-image" aria-hidden="true"></i><span>Poster</span>
+    <a href="https://github.com/rishikeshbadari/cs7643" class="btn btn--github" title="View on GitHub" style="text-decoration: none;">
+        <i class="fab fa-github" aria-hidden="true"></i><span>GitHub</span>
     </a>
     <a href="https://raw.githubusercontent.com/rishikeshbadari/cs7643/main/Final_Paper.pdf" class="btn btn--paper" title="Download Final Paper" style="text-decoration: none;" download="Final_Paper.pdf">
         <i class="fas fa-file-alt" aria-hidden="true"></i><span>Final Paper</span>
+    </a>
+    <a href="https://raw.githubusercontent.com/rishikeshbadari/cs7643/main/Poster.pdf" class="btn btn--poster" title="Download Poster" style="text-decoration: none;" download="Poster.pdf">
+            <i class="fas fa-image" aria-hidden="true"></i><span>Poster</span>
     </a>
 </div>
 <div class="project__summary">

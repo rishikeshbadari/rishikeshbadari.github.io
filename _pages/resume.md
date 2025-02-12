@@ -1,10 +1,10 @@
 ---
 layout: archive
 title: ""
-permalink: /experience_and_education/
+permalink: /experience/
 author_profile: true
 redirect_from:
-  - /experience_and_education
+  - /experience
 ---
 
 {% include base_path %}

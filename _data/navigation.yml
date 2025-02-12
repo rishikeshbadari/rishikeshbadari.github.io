@@ -17,8 +17,8 @@ main:
   # - title: "Blog Posts"
   #   url: /year-archive/
     
-  - title: "Experience & Education"
-    url: /experience_and_education/
+  - title: "Experience"
+    url: /experience/
 
   - title: "Projects"
     url: /portfolio/
