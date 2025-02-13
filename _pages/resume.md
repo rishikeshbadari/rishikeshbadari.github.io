@@ -64,12 +64,13 @@ redirect_from:
     color: #666; /* Dark gray */
   }
 
-  .sub-role {
-    margin-left: 20px;
-    padding-left: 15px;
-    border-left: 2px solid #ccc;
-    margin-top: 10px;
-  }
+.sub-role {
+  margin-left: 10px; /* Reduced margin */
+  padding-left: 0px; /* Reduced padding */
+  border-left: 2px solid #ccc;
+  margin-top: 10px;
+}
+
 
   .timeline-dot {
     width: 8px;
@@ -130,7 +131,6 @@ redirect_from:
       <!-- First Sub-Role -->
       <div class="sub-role">
         <div class="sub-role-content">
-          <div class="timeline-dot"></div>
           <div class="sub-role-title">UTA for CS 3600: Intro to Artificial Intelligence</div>
           <div class="sub-role-dates">Aug 2024 – Present · 7 mos</div>
           <div class="sub-role-description">Prof. Mark Riedl, Prof. Weicheng Ma</div>
@@ -141,7 +141,6 @@ redirect_from:
       <!-- Second Sub-Role -->
       <div class="sub-role">
         <div class="sub-role-content">
-          <div class="timeline-dot"></div>
           <div class="sub-role-title">UTA for CS 2340: Objects &amp; Design</div>
           <div class="sub-role-dates">Jan 2024 – Aug 2024 · 8 mos</div>
           <div class="sub-role-description">Prof. Nimisha Roy</div>
@@ -152,7 +151,6 @@ redirect_from:
       <!-- Third Sub-Role -->
       <div class="sub-role">
         <div class="sub-role-content">
-          <div class="timeline-dot"></div>
           <div class="sub-role-title">UTA for CS 2050: Intro to Discrete Math</div>
           <div class="sub-role-dates">May 2023 – Jan 2024 · 9 mos</div>
           <div class="sub-role-description">Prof. Ronnie Howard</div>
