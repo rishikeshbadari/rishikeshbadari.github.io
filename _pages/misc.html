@@ -6,25 +6,129 @@ author_profile: true
 redirect_from:
   - /misc
 ---
+
 <style>
-  /* Remove top margin on H2 globally */
-  h2 {
-    margin-top: 0;
-  }
+/* ================== All of your CSS in one place ================== */
 
-  .section-card {
-    background-color: #f9f9f9; /* Card background color */
-    border: 1px solid #ddd;    /* Subtle border */
-    border-radius: 10px;       /* Rounded corners */
-    padding: 1rem;             /* Spacing inside */
-    margin-bottom: 0;          /* Remove space between sections */
-  }
+/* 1) Global H2 margin removal */
+h2 {
+  margin-top: 0;
+}
 
-  /* Center the headings and paragraph text in all section-cards */
-  .section-card h2,
-  .section-card p {
-    text-align: center;
-  }
+/* 2) Card container */
+.section-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 0;  /* Remove space between sections */
+}
+
+/* 3) Center headings & paragraphs */
+.section-card h2,
+.section-card p {
+  text-align: center;
+}
+
+/* 4) Shared “scroll-gallery” styles (was in second style block) */
+.scroll-gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-color: #ccc #f0f0f0; /* Firefox only */
+}
+.scroll-gallery::-webkit-scrollbar {
+  height: 8px;
+  background-color: #f0f0f0;
+}
+.scroll-gallery::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 4px;
+}
+
+.img-container {
+  position: relative;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  overflow: hidden;
+}
+.img-container img {
+  display: block;
+  max-height: 300px;
+  object-fit: cover;
+  transition: box-shadow 0.2s;
+  width: auto;
+}
+.img-container img:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+/* 5) Overlays for date/rating */
+.img-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco",
+               "Roboto", "Segoe UI", "Helvetica Neue",
+               "Lucida Grande", Arial, sans-serif;
+}
+.img-container:hover .img-overlay {
+  opacity: 1;
+}
+.overlay-text {
+  margin: 0;
+}
+
+/* 6) Modal for personal pictures */
+.image-modal {
+  position: fixed;
+  inset: 0; /* top:0, right:0, bottom:0, left:0 */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.image-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.image-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.image-modal-content {
+  display: block;
+  margin: auto;
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.image-modal.active .image-modal-content {
+  transform: scale(1);
+  opacity: 1;
+}
 </style>
 
 <!-- FIRST SECTION: Personal Photos -->
@@ -37,183 +141,68 @@ redirect_from:
     <!-- images from gallery-data.js -->
   </div>
 
-  <!-- MODAL for click-to-magnify personal pictures -->
+  <!-- Modal for click-to-magnify personal pictures -->
   <div id="image-modal" class="image-modal">
     <span id="image-modal-close" class="image-modal-close">&times;</span>
     <img id="image-modal-content" class="image-modal-content" src="" alt="Expanded image">
   </div>
 
-  <style>
-  /* =============== SHARED STYLES for both galleries =============== */
-
-  /* 1) Horizontal scroll container */
-  .scroll-gallery {
-    display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-    padding: 1rem 0;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    scrollbar-color: #ccc #f0f0f0; /* Firefox only */
-  }
-  .scroll-gallery::-webkit-scrollbar {
-    height: 8px;
-    background-color: #f0f0f0;
-  }
-  .scroll-gallery::-webkit-scrollbar-thumb {
-    background-color: #bbb;
-    border-radius: 4px;
-  }
-
-  /* 2) Container for each image (photo or poster) */
-  .img-container {
-    position: relative;
-    flex-shrink: 0;
-    scroll-snap-align: center;
-    overflow: hidden;
-  }
-
-  /* 3) Each thumbnail image */
-  .img-container img {
-    display: block;
-    max-height: 300px;
-    object-fit: cover;
-    transition: box-shadow 0.2s;
-    width: auto;
-  }
-  .img-container img:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  }
-
-  /* 4) Overlay (used for pictures + movies to show date/rating) */
-  .img-overlay {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
-    line-height: 1.3;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-
-    text-align: center;
-    font-family: -apple-system, ".SFNSText-Regular", "San Francisco",
-                 "Roboto", "Segoe UI", "Helvetica Neue",
-                 "Lucida Grande", Arial, sans-serif;
-  }
-  .img-container:hover .img-overlay {
-    opacity: 1;
-  }
-  .overlay-text {
-    margin: 0;
-  }
-
-  /* 5) MODAL for personal pictures */
-  .image-modal {
-    position: fixed;
-    inset: 0; /* top:0, right:0, bottom:0, left:0 */
-    z-index: 9999;
-
-    display: flex;   /* toggled by .active */
-    justify-content: center;
-    align-items: center;
-
-    backdrop-filter: blur(8px);
-    background: rgba(255, 255, 255, 0.1);
-
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  .image-modal.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .image-modal-close {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    font-size: 2rem;
-    color: #fff;
-    cursor: pointer;
-  }
-  .image-modal-content {
-    display: block;
-    margin: auto;
-
-    max-width: 80%;
-    max-height: 80%;
-    object-fit: contain;
-
-    transform: scale(0.8);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-  .image-modal.active .image-modal-content {
-    transform: scale(1);
-    opacity: 1;
-  }
-  </style>
-
-  <!-- 2) Load pictures for your first gallery -->
+  <!-- Load pictures for your first gallery -->
   <script src="/pictures/gallery-data.js"></script>
-
   <script>
-  /* --- FIRST GALLERY (Personal Pictures) --- */
-  document.addEventListener("DOMContentLoaded", () => {
-    const galleryEl = document.getElementById("scroll-gallery");
+    /* --- FIRST GALLERY (Personal Pictures) --- */
+    document.addEventListener("DOMContentLoaded", () => {
+      const galleryEl = document.getElementById("scroll-gallery");
+      const modal = document.getElementById("image-modal");
+      const modalImg = document.getElementById("image-modal-content");
+      const closeBtn = document.getElementById("image-modal-close");
 
-    const modal = document.getElementById("image-modal");
-    const modalImg = document.getElementById("image-modal-content");
-    const closeBtn = document.getElementById("image-modal-close");
+      // Insert each personal photo from galleryData
+      galleryData.forEach(item => {
+        const container = document.createElement("div");
+        container.className = "img-container";
 
-    // Insert each personal photo from galleryData
-    galleryData.forEach(item => {
-      const container = document.createElement("div");
-      container.className = "img-container";
+        const img = document.createElement("img");
+        img.src = "/pictures/" + item.src;
+        img.alt = item.caption || "";
 
-      const img = document.createElement("img");
-      img.src = "/pictures/" + item.src;
-      img.alt = item.caption || "";
+        // Overlay for date + caption
+        const overlay = document.createElement("div");
+        overlay.className = "img-overlay";
 
-      // Overlay for date + caption
-      const overlay = document.createElement("div");
-      overlay.className = "img-overlay";
+        const dateP = document.createElement("p");
+        dateP.className = "overlay-text";
+        dateP.textContent = item.date || "";
 
-      const dateP = document.createElement("p");
-      dateP.className = "overlay-text";
-      dateP.textContent = item.date || "";
+        const captionP = document.createElement("p");
+        captionP.className = "overlay-text";
+        captionP.textContent = item.caption || "";
 
-      const captionP = document.createElement("p");
-      captionP.className = "overlay-text";
-      captionP.textContent = item.caption || "";
+        overlay.appendChild(dateP);
+        overlay.appendChild(captionP);
 
-      overlay.appendChild(dateP);
-      overlay.appendChild(captionP);
+        // Click => open modal
+        img.addEventListener("click", () => {
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          modal.classList.add("active");
+        });
 
-      // Click => open modal
-      img.addEventListener("click", () => {
-        modalImg.src = img.src;
-        modalImg.alt = img.alt;
-        modal.classList.add("active");
+        container.appendChild(img);
+        container.appendChild(overlay);
+        galleryEl.appendChild(container);
       });
 
-      container.appendChild(img);
-      container.appendChild(overlay);
-      galleryEl.appendChild(container);
-    });
-
-    // Close modal
-    closeBtn.addEventListener("click", () => {
-      modal.classList.remove("active");
-    });
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
+      // Close modal
+      closeBtn.addEventListener("click", () => {
         modal.classList.remove("active");
-      }
+      });
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
     });
-  });
   </script>
 </div>
 
@@ -222,75 +211,71 @@ redirect_from:
   <h2>Recently Watched Movies</h2>
   <p style="margin-bottom: 0rem;">I'm also by no means a critic. Heavy bias in my ratings.</p>
 
-  <!-- Container for the second scroll gallery (movie posters) -->
   <div id="movies-gallery" class="scroll-gallery"></div>
 
-  <!-- Load your new array with title, date, rating, link -->
+  <!-- Load array with title, date, rating, link -->
   <script src="/movies/tmdb-movie-titles.js"></script>
-
   <script>
-  /* --- SECOND GALLERY (Movie Posters from TMDb) --- */
-  document.addEventListener("DOMContentLoaded", async () => {
-    const apiKey = "38a9f63304ce81381bd2eb0d75d5c0c9";  // Your TMDb API key
-    const moviesEl = document.getElementById("movies-gallery");
+    /* --- SECOND GALLERY (Movie Posters from TMDb) --- */
+    document.addEventListener("DOMContentLoaded", async () => {
+      const apiKey = "38a9f63304ce81381bd2eb0d75d5c0c9";
+      const moviesEl = document.getElementById("movies-gallery");
 
-    for (const item of tmdbMovieData) {
-      // 1) Search TMDb for item.title
-      const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(item.title)}`;
+      for (const item of tmdbMovieData) {
+        const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(item.title)}`;
 
-      try {
-        const response = await fetch(searchUrl);
-        const data = await response.json();
+        try {
+          const response = await fetch(searchUrl);
+          const data = await response.json();
 
-        if (data.results && data.results.length > 0) {
-          const movie = data.results[0];
-          const posterPath = movie.poster_path;
+          if (data.results && data.results.length > 0) {
+            const movie = data.results[0];
+            const posterPath = movie.poster_path;
 
-          if (posterPath) {
-            // 2) Construct the poster URL
-            const posterUrl = `https://image.tmdb.org/t/p/w300${posterPath}`;
+            if (posterPath) {
+              const posterUrl = `https://image.tmdb.org/t/p/w300${posterPath}`;
 
-            // 3) Container
-            const container = document.createElement("div");
-            container.className = "img-container";
+              // Container
+              const container = document.createElement("div");
+              container.className = "img-container";
 
-            // 4) Link to your letterboxd reviews (from item.link)
-            const link = document.createElement("a");
-            link.href = item.link;
-            link.target = "_blank"; // new tab
+              // Link to letterboxd reviews
+              const link = document.createElement("a");
+              link.href = item.link;
+              link.target = "_blank";
 
-            // Poster image
-            const img = document.createElement("img");
-            img.src = posterUrl;
-            img.alt = item.title;
-            img.title = item.title;
+              // Poster
+              const img = document.createElement("img");
+              img.src = posterUrl;
+              img.alt = item.title;
+              img.title = item.title;
 
-            // Overlay for date + rating
-            const overlay = document.createElement("div");
-            overlay.className = "img-overlay";
+              // Overlay for date + rating
+              const overlay = document.createElement("div");
+              overlay.className = "img-overlay";
 
-            const dateP = document.createElement("p");
-            dateP.className = "overlay-text";
-            dateP.textContent = item.date || "";
+              const dateP = document.createElement("p");
+              dateP.className = "overlay-text";
+              dateP.textContent = item.date || "";
 
-            const ratingP = document.createElement("p");
-            ratingP.className = "overlay-text";
-            ratingP.textContent = item.rating || "";
+              const ratingP = document.createElement("p");
+              ratingP.className = "overlay-text";
+              ratingP.textContent = item.rating || "";
 
-            overlay.appendChild(dateP);
-            overlay.appendChild(ratingP);
+              overlay.appendChild(dateP);
+              overlay.appendChild(ratingP);
 
-            // Build up
-            link.appendChild(img);
-            container.appendChild(link);
-            container.appendChild(overlay);
-            moviesEl.appendChild(container);
+              // Build
+              link.appendChild(img);
+              container.appendChild(link);
+              container.appendChild(overlay);
+              moviesEl.appendChild(container);
+            }
           }
+        } catch (err) {
+          console.error("TMDb fetch error for", item.title, err);
         }
-      } catch (err) {
-        console.error("TMDb fetch error for", item.title, err);
       }
-    }
-  });
+    });
   </script>
 </div>
