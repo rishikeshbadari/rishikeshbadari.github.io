@@ -112,7 +112,7 @@ collection: portfolio
     </div>
     <div class="method-card">
         <h4>Seigal Disk</h4>
-        <a href="#">
+        <a href="https://github.com/rishikeshbadari/fractals/blob/julia/julia.pyde">
             <img src="/images/seigal-disk.png" alt="Seigal Disk Fractal">
         </a>
     </div>
