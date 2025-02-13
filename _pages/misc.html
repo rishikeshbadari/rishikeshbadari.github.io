@@ -9,28 +9,20 @@ redirect_from:
 
 <style>
 /* ================== All of your CSS in one place ================== */
-
-/* 1) Global H2 margin removal */
 h2 {
   margin-top: 0;
 }
-
-/* 2) Card container */
 .section-card {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 1rem;
-  margin-bottom: 0;  /* Remove space between sections */
+  margin-bottom: 0;
 }
-
-/* 3) Center headings & paragraphs */
 .section-card h2,
 .section-card p {
   text-align: center;
 }
-
-/* 4) Shared “scroll-gallery” styles (was in second style block) */
 .scroll-gallery {
   display: flex;
   overflow-x: auto;
@@ -66,7 +58,7 @@ h2 {
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
 
-/* 5) Overlays for date/rating */
+/* Overlays */
 .img-overlay {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -89,10 +81,10 @@ h2 {
   margin: 0;
 }
 
-/* 6) Modal for personal pictures */
+/* Modal */
 .image-modal {
   position: fixed;
-  inset: 0; /* top:0, right:0, bottom:0, left:0 */
+  inset: 0; 
   z-index: 9999;
   display: flex;
   justify-content: center;
@@ -159,36 +151,49 @@ h2 {
 
       // Insert each personal photo from galleryData
       galleryData.forEach(item => {
+        // Create container
         const container = document.createElement("div");
         container.className = "img-container";
 
-        const img = document.createElement("img");
-        img.src = "/pictures/" + item.src;
-        img.alt = item.caption || "";
+        // ---------------------
+        // NEW CODE: <picture> + WebP source + fallback <img>
+        // ---------------------
+        const picture = document.createElement("picture");
+
+        // If you know item.src is originally .png, let's replace .png with .webp
+        // Or if your gallery-data already references webp, just do .src = item.src
+        const webpSource = document.createElement("source");
+        webpSource.srcset = "/pictures/" + item.src.replace(/\.\w+$/, ".webp");
+        webpSource.type = "image/webp";
+        picture.appendChild(webpSource);
+
+        // Fallback <img> (PNG/JPEG)
+        const fallbackImg = document.createElement("img");
+        fallbackImg.src = "/pictures/" + item.src;
+        fallbackImg.alt = item.caption || "";
+        picture.appendChild(fallbackImg);
 
         // Overlay for date + caption
         const overlay = document.createElement("div");
         overlay.className = "img-overlay";
-
         const dateP = document.createElement("p");
         dateP.className = "overlay-text";
         dateP.textContent = item.date || "";
-
         const captionP = document.createElement("p");
         captionP.className = "overlay-text";
         captionP.textContent = item.caption || "";
-
         overlay.appendChild(dateP);
         overlay.appendChild(captionP);
 
-        // Click => open modal
-        img.addEventListener("click", () => {
-          modalImg.src = img.src;
-          modalImg.alt = img.alt;
+        // On click => open modal with whichever image is showing
+        fallbackImg.addEventListener("click", () => {
+          modalImg.src = fallbackImg.currentSrc;  // uses whichever image loaded (webp if supported)
+          modalImg.alt = fallbackImg.alt;
           modal.classList.add("active");
         });
 
-        container.appendChild(img);
+        // Add everything
+        container.appendChild(picture);
         container.appendChild(overlay);
         galleryEl.appendChild(container);
       });
@@ -250,18 +255,15 @@ h2 {
               img.alt = item.title;
               img.title = item.title;
 
-              // Overlay for date + rating
+              // Overlay
               const overlay = document.createElement("div");
               overlay.className = "img-overlay";
-
               const dateP = document.createElement("p");
               dateP.className = "overlay-text";
               dateP.textContent = item.date || "";
-
               const ratingP = document.createElement("p");
               ratingP.className = "overlay-text";
               ratingP.textContent = item.rating || "";
-
               overlay.appendChild(dateP);
               overlay.appendChild(ratingP);
 
