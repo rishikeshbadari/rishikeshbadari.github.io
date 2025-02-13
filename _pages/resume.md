@@ -170,7 +170,7 @@ redirect_from:
       <div class="location">Sunnyvale, California, United States · On-site</div>
       <p class="sub-role-description">
         Developed a scalable service for generating personalized market research newsletters with user-defined filters and summary levels. Automated data extraction using 
-        <strong>PhantomJSCloud API</strong> and <strong>BeautifulSoup</strong>, integrating <strong>LLMs</strong> to summarize financial trends and detect relevant updates. <br><br>
+        <strong>PhantomJSCloud API</strong> and <strong>BeautifulSoup</strong>, while integrating <strong>LLMs</strong> to detect, filter, and curate relevant updates based on user specifications. <br><br>
 
         Designed and deployed an <strong>AWS CDK pipeline</strong> that orchestrates multiple AWS services, including <strong>Lambda, S3, DynamoDB, Bedrock, SNS, EventBridge, and API Gateway</strong>. 
         Implemented <strong>Lambda functions</strong> to support both scheduled and on-demand processing, ensuring timely and accurate newsletter delivery. <br><br>

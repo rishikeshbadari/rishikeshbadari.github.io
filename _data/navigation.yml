@@ -22,6 +22,9 @@ main:
 
   - title: "Projects"
     url: /portfolio/
-    
+
+  - title: "More About Me"
+    url: /misc/
+  
   # - title: "Guide"
   #   url: /markdown/
