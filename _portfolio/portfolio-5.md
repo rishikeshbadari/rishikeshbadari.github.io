@@ -94,25 +94,25 @@ collection: portfolio
 <div class="methods-grid">
     <div class="method-card">
         <h4>Mandelbrot Set</h4>
-        <a href="https://github.com/rishikeshbadari/fractals/blob/mandelbrot/mandelbrot.pyde">
+        <a href="https://github.com/rishikeshbadari/fractals/blob/mandelbrot/README.md">
             <img src="/images/mandelbrot.png" alt="Mandelbrot Set Fractal">
         </a>
     </div>
     <div class="method-card">
         <h4>Barnsley Fern</h4>
-        <a href="https://github.com/rishikeshbadari/fractals/blob/barnsley-fern/barnsley-fern.pyde">
+        <a href="https://github.com/rishikeshbadari/fractals/blob/barnsley-fern/README.md">
             <img src="/images/barnsley-fern.png" alt="Barnsley Fern Fractal">
         </a>
     </div>
     <div class="method-card">
         <h4>Julia Set</h4>
-        <a href="https://github.com/rishikeshbadari/fractals/blob/julia/julia.pyde">
+        <a href="https://github.com/rishikeshbadari/fractals/blob/julia/README.md">
             <img src="/images/julia.png" alt="Julia Set Fractal">
         </a>
     </div>
     <div class="method-card">
         <h4>Seigal Disk</h4>
-        <a href="https://github.com/rishikeshbadari/fractals/blob/julia/julia.pyde">
+        <a href="https://github.com/rishikeshbadari/fractals/blob/julia/README.md">
             <img src="/images/seigal-disk.png" alt="Seigal Disk Fractal">
         </a>
     </div>
