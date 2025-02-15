@@ -1,6 +1,6 @@
 ---
 title: "Smart Cropping Tool"
-excerpt: "Crops images by finding the \"least important\" seams."
+excerpt: "Crops images by finding the \"least important\" seams. Sample of full website."
 collection: portfolio
 ---
 
