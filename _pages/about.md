@@ -14,7 +14,8 @@ redirect_from:
 
   <article>
     <p>
-      I'm currently pursuing a <strong>B.S./M.S. in Computer Science</strong> at <strong>Georgia Tech</strong>, specializing in Machine Learning, Artificial Intelligence, and Modeling/Simulations. I recently worked at Amazon, where I built a scalable backend service for AI-driven market research, and will be joining Meta as a Software Engineer Intern this summer.
+      I'm currently pursuing a <strong>B.S./M.S. in Computer Science</strong> at <strong>Georgia Tech</strong>, specializing in Machine Learning, Artificial Intelligence, and Modeling/Simulations. I recently worked at Amazon, where I built a scalable backend service for AI-driven market research.
+      <!-- , and will be joining Meta as a Software Engineer Intern this summer. -->
     </p>
     <p>
       My interests and experience lie in designing and optimizing full-stack applications, cloud-native architectures, and distributed systems. My technical stack includes <strong>Python, C++, AWS/Cloud Technologies, React, and SQL</strong>, with a strong focus on backend performance and data processing.

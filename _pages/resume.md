@@ -109,7 +109,7 @@ redirect_from:
   <div class="section-title">Experience</div>
 
   <!-- Meta Internship -->
-  <div class="experience-container">
+  <!-- <div class="experience-container">
     <img src="/images/meta.png" alt="Meta Logo">
     <div class="experience-content">
       <div class="job-title">Incoming Software Engineer Intern</div>
@@ -117,7 +117,7 @@ redirect_from:
       <div class="date-duration">May 2025 - Aug 2025 · 4 mos</div>
       <div class="location">Menlo Park, California, United States · On-site</div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Undergraduate Teaching Assistant at Georgia Tech -->
   <div class="experience-container">
@@ -187,14 +187,14 @@ redirect_from:
   <div class="section-title">Education</div>
 
   <!-- Master of Science -->
-  <div class="experience-container">
+  <!-- <div class="experience-container">
     <img src="/images/gt.png" alt="Georgia Tech Logo">
     <div class="experience-content">
       <div class="job-title">Georgia Institute of Technology</div>
       <div class="company-type">Master of Science - MS, Computer Science</div>
       <div class="date-duration">Aug 2025 - May 2026</div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Bachelor of Science -->
   <div class="experience-container">
